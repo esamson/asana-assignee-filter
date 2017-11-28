@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Asana Assignee Filter",
+  "short_name": "AAF",
+  "version": "0.1",
+  "description": "Filter by Assignee",
+  "content_scripts": [
+    {
+      "matches": ["https://app.asana.com/*"],
+      "js": ["target/scala-2.12/asana-assignee-filter-fastopt.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
