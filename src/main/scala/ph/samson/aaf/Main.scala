@@ -38,7 +38,7 @@ object Main {
     assignees = Set.empty
     val boardObserver = new MutationObserver((mutations, observer) => {
       val avatars = div
-        .querySelectorAll(".AssigneeAvatar-avatar")
+        .querySelectorAll("div.DomainUserAvatar-avatar")
         .filter(_.isInstanceOf[HTMLDivElement])
         .map(_.asInstanceOf[HTMLDivElement])
         .map(Avatar.apply)
@@ -61,7 +61,7 @@ object Main {
 
   val noAssignee = {
     val div = dom.document.createElement("div").asInstanceOf[HTMLDivElement]
-    div.classList.add("AssigneeAvatar")
+    div.classList.add("DomainUserAvatar")
     div.classList.add("Avatar")
     div.classList.add("Avatar--large")
     div.classList.add(s"Avatar--color${Random.nextInt(8)}")
@@ -69,11 +69,11 @@ object Main {
 
     div.onclick = event => {
       val boards = dom.document.querySelectorAll(
-        "div.BoardColumnCardsContainer-sortableListSortableItem")
+        "div.BoardColumnCardsContainer-draggableItemWrapper")
       for (board <- boards) {
         if (board
               .asInstanceOf[HTMLDivElement]
-              .querySelector("div.AssigneeAvatar--unassigned") != null) {
+              .querySelector("div.DomainUserAvatar--noValue") != null) {
           board.asInstanceOf[HTMLDivElement].style.display = "inline-block"
         } else {
           board.asInstanceOf[HTMLDivElement].style.display = "none"
@@ -86,7 +86,7 @@ object Main {
 
   val allAssignees = {
     val div = dom.document.createElement("div").asInstanceOf[HTMLDivElement]
-    div.classList.add("AssigneeAvatar")
+    div.classList.add("DomainUserAvatar")
     div.classList.add("Avatar")
     div.classList.add("Avatar--large")
     div.classList.add(s"Avatar--color${Random.nextInt(8)}")
@@ -94,7 +94,7 @@ object Main {
 
     div.onclick = event => {
       val boards = dom.document.querySelectorAll(
-        "div.BoardColumnCardsContainer-sortableListSortableItem")
+        "div.BoardColumnCardsContainer-draggableItemWrapper")
       for (board <- boards) {
         board.asInstanceOf[HTMLDivElement].style.display = "inline-block"
       }
@@ -135,7 +135,7 @@ object Main {
                     text: Option[String]) {
     def div(): HTMLDivElement = {
       val div = dom.document.createElement("div").asInstanceOf[HTMLDivElement]
-      div.classList.add("AssigneeAvatar")
+      div.classList.add("DomainUserAvatar")
       div.classList.add("Avatar")
       div.classList.add("Avatar--small")
       div.classList.add(color)
@@ -148,11 +148,11 @@ object Main {
 
       div.onclick = event => {
         val boards = dom.document.querySelectorAll(
-          "div.BoardColumnCardsContainer-sortableListSortableItem")
+          "div.BoardColumnCardsContainer-draggableItemWrapper")
         for (board <- boards) {
           val assignee = board
             .asInstanceOf[HTMLDivElement]
-            .querySelector("div.AssigneeAvatar-avatar")
+            .querySelector("div.DomainUserAvatar-avatar")
 
           if (assignee != null) {
             for (s <- style) {

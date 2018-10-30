@@ -1,1 +1,2 @@
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.21")
+addSbtCoursier
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.25")

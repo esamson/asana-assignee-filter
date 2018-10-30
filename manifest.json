@@ -8,7 +8,7 @@
     {
       "matches": ["https://app.asana.com/*"],
       "js": ["target/scala-2.12/asana-assignee-filter-fastopt.js"],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ]
 }
